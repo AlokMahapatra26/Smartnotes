@@ -20,7 +20,7 @@ async function Header() {
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center gap-4">
+        <nav className="flex items-center gap-4">
           {user ? (
             <LogoutButton />
           ) : (

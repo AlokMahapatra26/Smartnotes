@@ -10,7 +10,7 @@ import { logoutAction } from '@/actions/users'
 
 function LogoutButton() {
 
-    const [loading , setloading] = useState(false)
+    const [loading , setloading] = useState(false);
     const router = useRouter()
 
     const handleLogOut = async () => {
