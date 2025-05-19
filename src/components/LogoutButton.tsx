@@ -6,6 +6,7 @@ import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
 import { LogOut } from 'lucide-react'
 import "@/styles/globals.css"
+import { logoutAction } from '@/actions/users'
 
 function LogoutButton() {
 
@@ -15,9 +16,9 @@ function LogoutButton() {
     const handleLogOut = async () => {
         setloading(true)
 
-        await new Promise((resolve) => setTimeout(resolve , 2000))
+        
 
-        const errorMessage = 0
+        const { errorMessage } = await logoutAction();
 
         if(!errorMessage){
             toast.success("Logout successfully")
