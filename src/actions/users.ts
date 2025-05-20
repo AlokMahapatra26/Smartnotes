@@ -1,7 +1,9 @@
 "use server"
 
-import { createClient } from "@/auth/server"
-import { handleError } from "@/lib/utils"
+import { createClient } from "@/auth/server";
+import { handleError } from "@/lib/utils";
+import { db } from "@/db/index" ;
+import  { users } from "@/db/schema"; 
 
 export const loginAction = async (email : string, password : string) => {
     try{
@@ -53,7 +55,11 @@ export const signupAction = async (email : string, password : string) => {
 
         if(!userId) throw new Error("Error signing up");
 
-        //add user to database
+        //add userId and email into data
+        await db.insert(users).values({
+            id: userId,
+            email: email,
+            });
 
         return {errorMessage : null}
 
