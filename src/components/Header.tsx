@@ -4,14 +4,13 @@ import { Button } from "@/components/ui/button";
 import "@/styles/globals.css";
 import { ModeToggle } from "@/components/DarkModeToggle";
 import LogoutButton from "@/components/LogoutButton";
-// import { useState } from "react";
-import { Menu, X } from "lucide-react";
+
 import { getUser } from "@/auth/server";
 import { SidebarTrigger } from "./ui/sidebar";
 
 async function Header() {
   const user = await getUser();
-  // const [menuOpen, setMenuOpen] = useState(false);
+  
 
   return (
     <header className="w-full bg-popover text-popover-foreground shadow-md">

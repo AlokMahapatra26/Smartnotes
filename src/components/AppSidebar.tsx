@@ -17,7 +17,13 @@ export async function AppSidebar() {
 
   const user = await getUser()
 
-  let userNotes: any[] = []
+  let userNotes: {
+    id: string;
+    text: string;
+    authorId: string;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+  }[] = []
 
 
   if (user) {
@@ -37,7 +43,17 @@ export async function AppSidebar() {
           {user ? ("Your Notes") : (<p><Link href="/login" className="underline">Login</Link> {" "} to see your notes </p>)}
         </SidebarGroupLabel>
         {
-          user && <SidebarGroupContent notes={userNotes} />
+          user && (
+            <SidebarGroupContent
+              notes={userNotes.filter((note) => note.updatedAt !== null) as {
+                id: string;
+                text: string;
+                authorId: string;
+                createdAt: Date | null;
+                updatedAt: Date;
+              }[]}
+            />
+          )
         }
        </SidebarGroup>
       </SidebarContent>
