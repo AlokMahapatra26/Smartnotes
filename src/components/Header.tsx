@@ -7,6 +7,7 @@ import LogoutButton from "@/components/LogoutButton";
 // import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { getUser } from "@/auth/server";
+import { SidebarTrigger } from "./ui/sidebar";
 
 async function Header() {
   const user = await getUser();
@@ -14,7 +15,9 @@ async function Header() {
 
   return (
     <header className="w-full bg-popover text-popover-foreground shadow-md">
+      
       <div className="container mx-auto flex items-center justify-between p-4">
+        <SidebarTrigger/>
         <Link href="/" className="text-lg font-semibold">
           SmartNotes
         </Link>
