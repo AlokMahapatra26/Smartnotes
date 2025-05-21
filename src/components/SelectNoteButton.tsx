@@ -7,7 +7,13 @@ import { SidebarMenuButton } from "./ui/sidebar";
 import Link from "next/link";
 
 
-function SelectNoteButton({ note }: any) {
+interface Note {
+  id: string;
+  text: string;
+  updatedAt: Date;
+}
+
+function SelectNoteButton({ note }: { note: Note }) {
   const noteId = useSearchParams().get("noteId") || "";
 
   const { noteText: selectedNoteText } = useNote();

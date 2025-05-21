@@ -12,11 +12,20 @@ import Fuse from "fuse.js";
 import SelectNoteButton from "./SelectNoteButton";
 import DeleteNoteButton from "./DeleteNoteButton";
 
-// type Props = {
-//   notes: Note[];
-// };
 
-function SidebarGroupContent({ notes }:any) {
+
+interface Note {
+  id: string;
+  text: string;
+  updatedAt: Date;
+  // add other fields if needed
+}
+
+interface SidebarGroupContentProps {
+  notes: Note[];
+}
+
+function SidebarGroupContent({ notes }: SidebarGroupContentProps) {
   const [searchText, setSearchText] = useState("");
   const [localNotes, setLocalNotes] = useState(notes);
 
@@ -36,8 +45,8 @@ function SidebarGroupContent({ notes }:any) {
     : localNotes;
 
   const deleteNoteLocally = (noteId: string) => {
-    setLocalNotes((prevNotes:any) =>
-      prevNotes.filter((note:any) => note.id !== noteId),
+    setLocalNotes((prevNotes) =>
+      prevNotes.filter((note) => note.id !== noteId),
     );
   };
 
@@ -54,7 +63,7 @@ function SidebarGroupContent({ notes }:any) {
       </div>
 
       <SidebarMenu className="mt-4">
-        {filteredNotes.map((note:any) => (
+        {filteredNotes.map((note) => (
           <SidebarMenuItem key={note.id} className="group/item">
             <SelectNoteButton note={note} />
 
